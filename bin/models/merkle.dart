@@ -4,30 +4,7 @@ import 'node.dart';
 import 'transaction.dart';
 
 class MerkleTree {
-//   static String buildMerkleRoot(List<String> merkelLeaves) {
-//     if (merkelLeaves.isEmpty) return "";
 
-//     if (merkelLeaves.length == 1) {
-//       return hash(merkelLeaves.first);
-//     }
-// /*
-//     if (merkelLeaves.length % 2 > 0) {
-//       merkelLeaves.add(merkelLeaves.last);
-//     }*/
-//     while ((merkelLeaves.length & (merkelLeaves.length - 1)) != 0) {
-//       merkelLeaves.add(merkelLeaves.last);
-//     }
-
-//     List<String> merkleBranches = [];
-
-//     for (int i = 0; i < merkelLeaves.length; i += 2) {
-//       String leafPair = merkelLeaves[i] + merkelLeaves[i + 1];
-//       //double hash
-
-//       merkleBranches.add(hash(leafPair));
-//     }
-//     return buildMerkleRoot(merkleBranches);
-//   }
   static late Node root;
   static late List<Node> childNodes;
 
@@ -115,31 +92,3 @@ class MerkleTree {
 
 
 
-
-// public class MerkleTree {
-
-//     public String createMerkleTree(ArrayList<String> txnLists) {
-//         ArrayList<String> merkleRoot = merkleTree(txnLists);
-//         return merkleRoot.get(0);
-//     }
-
-//     private ArrayList<String> merkleTree(ArrayList<String> hashList){
-//         //Return the Merkle Root
-//         if(hashList.size() == 1){
-//             return hashList;
-//         }
-//         ArrayList<String> parentHashList=new ArrayList<>();
-//         //Hash the leaf transaction pair to get parent transaction
-//         for(int i=0; i<hashList.size(); i+=2){
-//             String hashedString = getSHA(hashList.get(i).concat(hashList.get(i+1)));
-//             parentHashList.add(hashedString);
-//         }
-//         // If odd number of transactions , add the last transaction again
-//         if(hashList.size() % 2 == 1){
-//             String lastHash=hashList.get(hashList.size()-1);
-//             String hashedString = getSHA(lastHash.concat(lastHash));
-//             parentHashList.add(hashedString);
-//         }
-//         return merkleTree(parentHashList);
-//     }
-// }

@@ -23,6 +23,6 @@ class Header {
 
   factory Header.fromJSON(Map<String, dynamic> map) {
     return Header(map['version'], map['previousHash'], map['merkleRoot'],
-        map['timestamps'], map['difficultyBits']);
+        map['time'], map['bits'],nonce: map['nonce']);
   }
 }

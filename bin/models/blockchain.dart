@@ -1,4 +1,3 @@
-
 import '../storage/storage.dart';
 import 'block.dart';
 import 'header.dart';
@@ -8,18 +7,18 @@ import 'transaction.dart';
 class Blockchain {
   final List<Block> _blocks = [];
   List<Transaction> _unconfirmedTransactions = [];
-  BlockStorage blockStorage = BlockStorage();
-  Blockchain() {
-    createGenesisBlock();
-    blockStorage.readJson().then((List<Block> value) {
-      if (value.isEmpty) {
-        createGenesisBlock();
-      } else {
-        _blocks.clear();
-        _blocks.addAll(value);
-      }
-    });
+  final BlockStorage blockStorage;
+
+  Blockchain(List<Block> value, this.blockStorage) {
+    if (value.isEmpty) {
+      createGenesisBlock();
+    } else {
+      _blocks.clear();
+      _blocks.addAll(value);
+    }
   }
+
+  
 
 // first transaction to generate GENESIS Block from minig it
   void createGenesisBlock() {
@@ -89,7 +88,7 @@ class Blockchain {
     }
     block.hash = proof;
     _blocks.add(block);
-     blockStorage.writeJson(block);
+    blockStorage.writeJson(block);
     return true;
   }
 

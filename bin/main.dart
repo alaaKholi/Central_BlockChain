@@ -1,12 +1,16 @@
+import 'models/block.dart';
 import 'models/blockchain.dart';
 import 'models/transaction.dart';
+import 'storage/storage.dart';
 
-void main(List<String> arguments) {
-  
-  Blockchain blockchain = Blockchain();
+void main(List<String> arguments) async {
+  BlockStorage blockStorage = BlockStorage();
 
-  blockchain.addTransaction(Transaction("ahmed1", "raed1", 50,"2"));
-  blockchain.addTransaction(Transaction("ahmed1", "raed11", 50,"5"));
+  List<Block> blocks = await blockStorage.readJson();
+  Blockchain blockchain = Blockchain(blocks, blockStorage);
+
+  blockchain.addTransaction(Transaction("ahmed1", "raed1", 50, "2"));
+  blockchain.addTransaction(Transaction("ahmed1", "raed11", 50, "5"));
 
   blockchain.mine();
 

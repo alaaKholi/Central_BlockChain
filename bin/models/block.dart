@@ -50,34 +50,4 @@ class Block {
         Header.fromJSON(map['header'] as Map<String, dynamic>),
         transactionList);
   }
-
-  // List<String> merkleTree() {
-  //   List<String> tree = [];
-  //   // Start by adding all the hashes of the transactions as leaves of the
-  //   // tree.
-  //   for (Transaction t in transactions) {
-  //     tree.add(t.hash!);
-  //   }
-  //   int levelOffset = 0; // Offset in the list where the currently processed
-  //   // level starts.
-  //   // Step through each level, stopping when we reach the root (levelSize
-  //   // == 1).
-  //   for (int levelSize = transactions.length;
-  //       levelSize > 1;
-  //       levelSize =((levelSize + 1) / 2).round() ) {
-  //     // For each pair of nodes on that level:
-  //     for (int left = 0; left < levelSize; left += 2) {
-  //       // The right hand node can be the same as the left hand, in the
-  //       // case where we don't have enough
-  //       // transactions.
-  //       int right = min(left + 1, levelSize - 1);
-  //       String tleft = tree.elementAt(levelOffset + left);
-  //       String tright = tree.elementAt(levelOffset + right);
-  //       tree.add(SHA256.hash(tleft + tright));
-  //     }
-  //     // Move to the next level.
-  //     levelOffset += levelSize;
-  //   }
-  //   return tree;
-  // }
 }
